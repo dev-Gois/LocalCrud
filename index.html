@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="shortcut icon" href="./carrinho-de-compras.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>LocalCrud</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="topo">
+      <h1>LocalCRUD</h1>
+      <div class="botoes">
+        <button id="comprarProduto" onclick="modalCompra.showModal()">Comprar Produto</button>
+        <button id="adicionarProduto" onclick="modalCadastro.showModal()">Cadastrar Produto</button>
+        <button id="adicionarCategoria" onclick="modalCategoria.showModal()">Adicionar Categoria</button>
+        <button id="removerCategoria" onclick="mdlRemovCategoria.showModal()">Remover Categoria</button>
+      </div>
+    </header>
+
+    <h1>Lista de Produtos</h1>
+    <div class="tabela-wrapper">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Categoria</th>
+            <th>Estoque</th>
+            <th>Preço</th>
+            <th class="titleBotao">Editar</th>
+            <th class="titleBotao">Excluir</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaRead">
+        </tbody>
+      </table>
+    </div>
+
+    <dialog id="modalCadastro">
+      <h1>Cadastrar Produto</h1>
+      <input type="text" placeholder="Nome do produto" id="nomeProduto">
+      <select name="categoriaProduto" id="categoriaProduto">
+        <option value="" disabled selected>Selecione uma categoria</option>
+        <option value="Sem categoria">Sem categoria</option>
+      </select>
+      <input type="number" name="estoqueProduto" id="estoqueProduto" placeholder="Quantia de estoque">
+      <input type="number" name="precoProduto" id="precoProduto" placeholder="Preço do produto">
+      <div class="botoesModal">
+        <button class="btnModalLaranja" id="confirmarCadastro" onclick="cadastrarProduto()">Cadastrar Produto</button>
+        <button class="btnModalVermelho" id="cancelarCadastro" onclick="modalCadastro.close()">Cancelar
+          cadastro</button>
+      </div>
+    </dialog>
+
+    <dialog id="modalEditar">
+      <h1>Editar Produto</h1>
+      <input type="text" placeholder="Nome do produto" id="editarNome">
+      <select name="categoriaProduto" id="editarCategoria">
+        <option value="Sem categoria">Sem categoria</option>
+      </select>
+      <input type="number" name="estoqueProduto" id="editarEstoque" placeholder="Quantia de estoque">
+      <input type="number" name="precoProduto" id="editarPreco" placeholder="Preço do produto">
+      <div class="botoesModal">
+        <button class="btnModalLaranja" id="editarProduto" onclick="editarProduto(produtoAtual.id)">Editar Produto</button>
+        <button class="btnModalVermelho" id="cancelar" onclick="modalEditar.close()">Cancelar</button>
+      </div>
+    </dialog>
+
+    <dialog id="modalCompra">
+      <h1>Comprar Produto</h1>
+      <input type="text" placeholder="Nome do produto" id="compraProduto">
+      <input type="number" name="" id="compraQuantia" placeholder="Quantia desejada">
+      <div class="botoesModal">
+        <button class="btnModalLaranja" id="confirmarCompra" onclick="comprarProduto()">Comprar Produto</button>
+        <button class="btnModalVermelho" id="cancelarCompra" onclick="modalCompra.close()">Cancelar Compra</button>
+      </div>
+    </dialog>
+
+    <dialog id="modalCategoria">
+      <h1>Adicionar Categoria</h1>
+      <input type="text" id="nomeCategoria" placeholder="Nome da categoria">
+      <div class="botoesModal">
+        <button class="btnModalLaranja" id="confirmarCategoria" onclick="cadastrarCategoria()">Adicionar
+          Categoria</button>
+        <button class="btnModalVermelho" id="cancelarCategoria" onclick="modalCategoria.close()">Cancelar
+          Cadastro</button>
+      </div>
+    </dialog>
+
+    <dialog id="mdlRemoveCategoria">
+      <h1>Remover Categoria</h1>
+      <select name="categorias" id="categorias">
+        <option value="" disabled selected>Selecione uma categoria</option>
+      </select>
+      <div class="botoesModal">
+        <button class="btnModalLaranja" id="removerCategoria" onclick="removerCategoria()">Remover Categoria</button>
+        <button class="btnModalVermelho" id="cancelarCategoria" onclick="mdlRemovCategoria.close()">Cancelar</button>
+      </div>
+    </dialog>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
